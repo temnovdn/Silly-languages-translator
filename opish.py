@@ -4,15 +4,8 @@ def opish(original):
     Return original string translated to opish.
     Return emtpy string if original is empty.
     
-    >>>opish('cat')
-    'copatop'
-    >>>opish('bolt')
-    'bopoloptop'
-    >>>opish('abracadabra')
-    'abopropacopadoparopa'
-    >>> opish('123')
-    Non-alphabetical string input
-    -1
+    >>> opish("This is a fine day!")
+    'Tophopisop isop a fopinope dopayop!'
     >>> opish('')
     Empty string input
     ''
@@ -31,7 +24,7 @@ def opish(original):
                 new_word = new_word + char
             else:
                 #Check if there's non-alphabetic symbols in sentence
-                if char not in """~!@#$%^&*()_+-=:"|;'\<>?,./1234567890 """:
+                if char in """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ""":
                     new_word = new_word + char + 'op'
                 else:
                     new_word = new_word + char
