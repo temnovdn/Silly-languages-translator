@@ -1,45 +1,36 @@
 def turkey_irish(original):
-    """
+    """(str) -> str
 
     Return original word translated to Turkey Irish.
-    Return empty string if original is empty.
-    Return -1 if original is non-alphabetical
+    Return emtu string if input string is empty.
 
-    >>>turkey_irish('cat')
-    'cabat'
-    >>>turkey_irish('bolt')
-    'babolt'
-    >>>turkey_irish('abracadabra')
-    'ababrabacabadababraba'
-    >>>turkey_irish('Mary')
-    'Mabary'
-    >>>turkey_irish('Annie')
-    'Abannabiabe'
-    >>>turkey_irish('123')
-    'Non-alphabetical string input'
+    >>> turkey_irish("This is a fine day!")
+    'Thabis abis aba fabinabe dabay!'
+    >>>turkey_irish('')
     ''
     """
 
-    #Converted word will be stored in new_word.
-    new_word = ''
-    first_letter = original[0]
+
 
     #Check if string is empty
     if original == '':
         print("Empty string input")
-    else:   
-        #check if string is alphabetic
-        if original.isalpha():
-            #Conversion to Turkey Irish
-            for char in original:
+        return ''
+    else:
+        #Converted word will be stored in new_word.
+        new_word = ''
+        first_letter = original[0]
+        #Conversion to Turkey Irish
+        for char in original:
+            if char in """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ""":
                 if char in 'aeiou':
                     new_word = new_word + 'ab' + char
                 elif char in 'AEIOU':
                     new_word = new_word +'Ab' + char.lower()
                 else:
                     new_word = new_word + char
-        else:
-            print ("Non-alphabetical string input")
-            return -1
+            else:
+                new_word = new_word + char
+        
 
     return new_word
