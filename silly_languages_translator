@@ -106,9 +106,9 @@ def sentence_to_words(original):
 def words_to_sentence(words):
     """(list) -> str
 
-    Return given list of strings as a sentence.
+    Return given list of words and punctuation marks as a sentence.
 
-    >>>words_to_sentence(["You", "'re", 'like', 'football', ',', '', 'are', 'you', '?'])
+    >>>words_to_sentence(["You", "'re", 'like', 'football', ',', 'are', 'you', '?'])
     "You 're like football, are you?"
     """
 
@@ -151,7 +151,7 @@ def pig_latin(original):
     
     #Check if string is empty
     if original == '':
-        print("Empty string input")
+        return ''
     else:
         #Converted word willbe stored in new_word.
         new_word = ''
@@ -179,7 +179,11 @@ def sentence_pig_latin(sentence):
     """(str) -> str
 
     Return the sentence, converted to pig latin.
-
+    
+    >>> sentence_pig_latin("Quick brown fox jumps over a lazy dog.")
+    'Uickqay rownbay oxfay umpsjay overway away azylay ogday.'
+    >>> sentence_pig_latin("You are like football, are you?")
+    'Ouyay areway ikelay ootballfay, areway ouyay?'
     """
     words = sentence_to_words(sentence)
     index = 0
@@ -192,9 +196,9 @@ def sentence_pig_latin(sentence):
 
     return words_to_sentence(words)
 
+#Endless loop of silly translations
 
-#initialising endless loop of silly translations
-i = 1
+i=1
 
 while i > 0:
     #Sentence input
