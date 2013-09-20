@@ -1,7 +1,9 @@
-pig_latin(original):
-    """(str) -> str
+def pig_latin(original):
+    """
 
     Return original word, converted to Pig Latin.
+    Return emty string if original is empty.
+    Return -1 if original in non-alphabetical.
 
     >>> pig_latin('yellow')
     'ellowyay'
@@ -39,5 +41,6 @@ pig_latin(original):
                     new_word = second_letter.upper() + original[2:] + first_letter.lower() + 'ay'
         else:
             print ("Non-alphabetical string input")
+            return -1
 
     return new_word
