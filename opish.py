@@ -11,13 +11,15 @@ def opish(original):
     ''
     """
 
-    #Converted word will be stored in new_word.
-    new_word = ''
+
 
     #Check if string is empty
     if original == '':
         print("Empty string input")
-    else:   
+        return ''
+    else:
+        #Converted word will be stored in new_word.
+        new_word = ''
         #Conversion to Opish
         for char in original:
             if char in 'aeiouAEIOU':
