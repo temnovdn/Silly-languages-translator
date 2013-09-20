@@ -1,7 +1,9 @@
 def opish(original):
-    """(str) -> str
+    """(str) -> str, int
 
     Return original word translated to opish.
+    Return emtpy string if original is empty.
+    Return -1 if original is non-alphabetical
 
     >>>opish('cat')
     'copatop'
@@ -9,6 +11,12 @@ def opish(original):
     'bopoloptop'
     >>>opish('abracadabra')
     'abopropacopadoparopa'
+    >>> opish('123')
+    Non-alphabetical string input
+    -1
+    >>> opish('')
+    Empty string input
+    ''
     """
 
     #Converted word will be stored in new_word.
@@ -28,5 +36,6 @@ def opish(original):
                     new_word = new_word + char + 'op'
         else:
             print ("Non-alphabetical string input")
+            return -1
 
     return new_word
