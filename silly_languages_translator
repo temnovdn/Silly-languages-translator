@@ -1,0 +1,217 @@
+#This translator will translate provided sentence to Opish, Turkey Irish or
+#Pig Latin.
+
+def opish(original):
+    """(str) -> str
+
+    Return original string translated to opish.
+    Return emtpy string if original is empty.
+    
+    >>> opish("This is a fine day!")
+    'Tophopisop isop a fopinope dopayop!'
+    >>> opish('')
+    Empty string input
+    ''
+    """
+
+
+
+    #Check if string is empty
+    if original == '':
+        print("Empty string input")
+        return ''
+    else:
+        #Converted word will be stored in new_word.
+        new_word = ''
+        #Conversion to Opish
+        for char in original:
+            if char in 'aeiouAEIOU':
+                new_word = new_word + char
+            else:
+                #Check if there's non-alphabetic symbols in sentence
+                if char in """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ""":
+                    new_word = new_word + char + 'op'
+                else:
+                    new_word = new_word + char
+        
+    return new_word
+
+def turkey_irish(original):
+    """(str) -> str
+
+    Return original word translated to Turkey Irish.
+    Return emtu string if input string is empty.
+
+    >>> turkey_irish("This is a fine day!")
+    'Thabis abis aba fabinabe dabay!'
+    >>>turkey_irish('')
+    ''
+    """
+
+
+
+    #Check if string is empty
+    if original == '':
+        print("Empty string input")
+        return ''
+    else:
+        #Converted word will be stored in new_word.
+        new_word = ''
+        first_letter = original[0]
+        #Conversion to Turkey Irish
+        for char in original:
+            if char in """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ""":
+                if char in 'aeiou':
+                    new_word = new_word + 'ab' + char
+                elif char in 'AEIOU':
+                    new_word = new_word +'Ab' + char.lower()
+                else:
+                    new_word = new_word + char
+            else:
+                new_word = new_word + char
+        
+
+    return new_word
+
+
+def sentence_to_words(original):
+    """
+
+    Return list of words and punctuation marks from original string.
+    Return -1 if string is empty.
+    
+    >>> sentence_to_words('This is a fine day!')
+    ['This','is','a','fine','day','!']
+    >>> sentence_to_words("You're like football, are you?")
+    ["You're",'like','football',',','are','you','?']
+    >>> sentence_to_words('')
+    -1
+    """
+
+    words = []
+    word = ''
+    
+    for char in original:
+        word = word + char
+        if word[-1] in """ '""":
+            words.append(word[:-1])
+            word = ''
+        elif word[-1] in """!&();:",.?""":
+            words.append(word[:-1])
+            words.append(word[-1])
+            word = ''
+
+    return words[:]
+
+def words_to_sentence(words):
+    """(list) -> str
+
+    Return given list of strings as a sentence.
+
+    >>>words_to_sentence(["You", "'re", 'like', 'football', ',', '', 'are', 'you', '?'])
+    "You 're like football, are you?"
+    """
+
+    sentence = ''
+    for index in range(0,len(words)):
+        word = words[index]
+        if index != len(words) - 1:
+            if words[index + 1] == ' ' or words [index + 1] == '' or words[index + 1] in """?.,":';-)(!""":
+                    sentence = sentence + words[index]
+            else:
+                    sentence = sentence + words[index] + ' '
+        else:   
+            sentence = sentence + words[index]
+    
+
+    return sentence
+
+        
+def pig_latin(original):
+    """(str) -> str
+
+    Return original string, converted to Pig Latin.
+    Return empty string if original is empty.
+    Return original string if it's not alphabetical.
+
+    >>> pig_latin('yellow')
+    'ellowyay'
+    >>> pig_latin('egg')
+    'way'
+    >>> pig_latin('')
+    Empty string input
+    ''
+    >>> pig_latin('Mary')
+    'Arymay'
+    >>> pig_latin('Annie')
+    'Annieway'
+    """
+
+    new_word = ''
+    
+    #Check if string is empty
+    if original == '':
+        print("Empty string input")
+    else:
+        #Converted word willbe stored in new_word.
+        new_word = ''
+        first_letter = original[0]
+        if len(original) > 1:
+            second_letter = original[1]
+        else:
+            second_letter = ''
+        #check if string is alphabetic
+        if original.isalpha():
+            #Conversion to Pig Latin
+            if original[0] in 'aeiouAEIOU':
+                new_word = original + 'way'
+            else:
+                if original[0].islower():
+                    new_word = original[1:] + first_letter + 'ay'
+                else:
+                    new_word = second_letter.upper() + original[2:] + first_letter.lower() + 'ay'
+        else:
+            return original
+
+    return new_word
+
+def sentence_pig_latin(sentence):
+    """(str) -> str
+
+    Return the sentence, converted to pig latin.
+
+    """
+    words = sentence_to_words(sentence)
+    index = 0
+    
+    
+    while index < len(words):
+        word = words[index]
+        words[index] = pig_latin(word)
+        index = index + 1
+
+    return words_to_sentence(words)
+
+
+#initialising endless loop of silly translations
+i = 1
+
+while i > 0:
+    #Sentence input
+    sentence = input("Please type the sentence to translate: ")
+    
+    #Language selection menu
+    print("Please select output language:")
+    print("1 Opish\n2 Turkey Irish\n3 Pig Latin")
+
+    select = input("Input 1,2 or 3 here: ")
+    #Translation
+    if select == '1':
+        new_sentence = opish(sentence)
+    elif select == '2':
+        new_sentence = turkey_irish(sentence)
+    else:
+        new_sentence = sentence_pig_latin(sentence)
+
+    print(new_sentence)
+    
