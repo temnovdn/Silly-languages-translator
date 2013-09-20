@@ -1,10 +1,9 @@
 def opish(original):
-    """(str) -> str, int
+    """(str) -> str
 
-    Return original word translated to opish.
+    Return original string translated to opish.
     Return emtpy string if original is empty.
-    Return -1 if original is non-alphabetical
-
+    
     >>>opish('cat')
     'copatop'
     >>>opish('bolt')
@@ -26,16 +25,15 @@ def opish(original):
     if original == '':
         print("Empty string input")
     else:   
-        #check if string is alphabetic
-        if original.isalpha():
-            #Conversion to Opish
-            for char in original:
-                if char in 'aeiouAEIOU':
-                    new_word = new_word + char
-                else:
+        #Conversion to Opish
+        for char in original:
+            if char in 'aeiouAEIOU':
+                new_word = new_word + char
+            else:
+                #Check if there's non-alphabetic symbols in sentence
+                if char not in """~!@#$%^&*()_+-=:"|;'\<>?,./1234567890 """:
                     new_word = new_word + char + 'op'
-        else:
-            print ("Non-alphabetical string input")
-            return -1
-
+                else:
+                    new_word = new_word + char
+        
     return new_word
