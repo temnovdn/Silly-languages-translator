@@ -1,58 +1,7 @@
-def sentence_to_words(original):
-    """
-
-    Return list of words and punctuation marks from original string.
-    Return -1 if string is empty.
-    
-    >>> sentence_to_words('This is a fine day!')
-    ['This','is','a','fine','day','!']
-    >>> sentence_to_words("You're like football, are you?")
-    ["You're",'like','football',',','are','you','?']
-    >>> sentence_to_words('')
-    -1
-    """
-
-    words = []
-    word = ''
-    
-    for char in original:
-        word = word + char
-        if word[-1] in """ '""":
-            words.append(word[:-1])
-            word = ''
-        elif word[-1] in """!&();:",.?""":
-            words.append(word[:-1])
-            words.append(word[-1])
-            word = ''
-
-    return words[:]
-
-def words_to_sentence(words):
-    """(list) -> str
-
-    Return given list of strings as a sentence.
-
-    >>>words_to_sentence(["You", "'re", 'like', 'football', ',', '', 'are', 'you', '?'])
-    "You 're like football, are you?"
-    """
-
-    sentence = ''
-    for index in range(0,len(words)):
-        word = words[index]
-        if index != len(words) - 1:
-            if words[index + 1] == ' ' or words [index + 1] == '' or words[index + 1] in """?.,":';-)(!""":
-                    sentence = sentence + words[index]
-            else:
-                    sentence = sentence + words[index] + ' '
-        else:   
-            sentence = sentence + words[index]
-    
-
-    return sentence
-
-        
+# This code translates sentence from English to Pig Latin.
+       
 def pig_latin(original):
-    """(str) -> str
+    """pig_latin(str) -> str
 
     Return original string, converted to Pig Latin.
     Return empty string if original is empty.
@@ -75,11 +24,12 @@ def pig_latin(original):
     
     #Check if string is empty
     if original == '':
-        print("Empty string input")
+        return ''
     else:
-        #Converted word willbe stored in new_word.
+        #Converted word will be stored in new_word.
         new_word = ''
         first_letter = original[0]
+        #Check if original string contains only one letter
         if len(original) > 1:
             second_letter = original[1]
         else:
@@ -100,18 +50,31 @@ def pig_latin(original):
     return new_word
 
 def sentence_pig_latin(sentence):
-    """(str) -> str
+    """sentence_pig_latin(str) -> str
 
     Return the sentence, converted to pig latin.
-
-    """
-    words = sentence_to_words(sentence)
-    index = 0
     
+    >>> sentence_pig_latin("Quick brown fox jumps over a lazy dog.")
+    'Uickqay rownbay oxfay umpsjay overway away azylay ogday.'
+    >>> sentence_pig_latin("You are like football, are you?")
+    'Ouyay areway ikelay ootballfay, areway ouyay?'
+    """
+    words = sentence.split()
+    i = 0
+    
+    while i < len(words):
+        if words[i][-1] in """:;,""":
+            words.insert(i+1,words[i][-1])
+            words[i] = words[i][:-1]
+            i = i + 2
+        else:
+            i = i + 1
+    
+    index = 0
     
     while index < len(words):
         word = words[index]
         words[index] = pig_latin(word)
         index = index + 1
 
-    return words_to_sentence(words)
+    return ' '.join(words)
