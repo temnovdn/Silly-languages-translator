@@ -10,7 +10,7 @@ def pig_latin(original):
     >>> pig_latin('yellow')
     'ellowyay'
     >>> pig_latin('egg')
-    'way'
+    'eggway'
     >>> pig_latin('')
     Empty string input
     ''
