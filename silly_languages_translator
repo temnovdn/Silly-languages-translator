@@ -4,26 +4,31 @@
 import pig_latin
 import opish
 import turkey_irish
+from Tkinter import *
 
-i = 1
 
-while i > 0:
-    sentence = input("Please type the sentence to translate: ")
-    print("Please select output language:")
-    print("1 Opish\n2 Turkey Irish\n3 Pig Latin")
+# i = 1
 
-    select_done = False
-    select = input("Input 1,2 or 3 here: ")
+# while i > 0:
+    # sentence = input("Please type the sentence to translate: ")
+    # print("Please select output language:")
+    # print("1 Opish\n2 Turkey Irish\n3 Pig Latin")
+
+    # select_done = False
+    # select = input("Input 1,2 or 3 here: ")
     
-    if select == '1':
-        select_
-        new_sentence = opish.opish(sentence)
-        print(new_sentence)
-    elif select == '2':
-        new_sentence = turkey_irish.turkey_irish(sentence)
-        print(new_sentence)
-    elif select == '3':
-        new_sentence = pig_latin.sentence_pig_latin(sentence)
-        print(new_sentence)
-    else:
-        print('Please input 1, 2, or 3')  
+    # if select == '1':
+        # select_
+        # new_sentence = opish.opish(sentence)
+        # print(new_sentence)
+    # elif select == '2':
+        # new_sentence = turkey_irish.turkey_irish(sentence)
+        # print(new_sentence)
+    # elif select == '3':
+        # new_sentence = pig_latin.sentence_pig_latin(sentence)
+        # print(new_sentence)
+    # else:
+        # print('Please input 1, 2, or 3')  
+
+frame = Tk()
+frame.title("Silly languages translator")

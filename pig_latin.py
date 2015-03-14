@@ -63,7 +63,7 @@ def sentence_pig_latin(sentence):
     i = 0
     
     while i < len(words):
-        if words[i][-1] in """:;,""":
+        if words[i][-1] in """:;,.&?!""":
             words.insert(i+1,words[i][-1])
             words[i] = words[i][:-1]
             i = i + 2
